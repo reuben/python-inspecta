@@ -3,6 +3,8 @@
 #       IMPORTS
 # --------------------------------------
 
+from __future__ import print_function
+
 import rootpath
 
 rootpath.append()
@@ -13,6 +15,12 @@ import pprint
 from os import environ as env
 from pygments import highlight, lexers, formatters
 from termcolor import colored as color
+
+try:
+    import __builtin__
+except ImportError:
+    # Python 3
+    import builtins as __builtin__
 
 
 # =========================================
@@ -78,7 +86,5 @@ def inspect(
 
     return result
 
-_print = print
-
 def print(*args, **kwargs):
-    _print(inspect(*args, *kwargs))
+    __builtin__.print(inspect(*args, *kwargs))
