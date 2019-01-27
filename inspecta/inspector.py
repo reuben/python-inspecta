@@ -3,7 +3,7 @@
 #       IMPORTS
 # --------------------------------------
 
-from __future__ import print_function
+from __future__ import print_function # Python 2
 
 import rootpath
 
@@ -17,10 +17,9 @@ from pygments import highlight, lexers, formatters
 from termcolor import colored as color
 
 try:
-    import __builtin__
+    import __builtin__ # Python 2
 except ImportError:
-    # Python 3
-    import builtins as __builtin__
+    import builtins as __builtin__ # Python 3
 
 
 # =========================================
@@ -87,4 +86,4 @@ def inspect(
     return result
 
 def print(*args, **kwargs):
-    __builtin__.print(inspect(*args, **kwargs))
+    return __builtin__.print(inspect(*args, **kwargs))

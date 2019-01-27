@@ -3,6 +3,9 @@
 #       IMPORTS
 # --------------------------------------
 
+
+from __future__ import print_function
+
 import rootpath
 
 rootpath.append()
@@ -19,12 +22,14 @@ env['VERBOSE'] = 'true' # lower prio
 env['INSPECTOR_COLORS'] = 'false' # higher prio
 env['INSPECTOR_VERBOSE'] = 'false' # higher prio
 
+
 # =========================================
 #       HELPERS
 # --------------------------------------
 
 def trim(string):
     return string.replace(' ', '').replace('\n', '')
+
 
 # =========================================
 #       TEST
