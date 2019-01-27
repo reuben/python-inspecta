@@ -87,4 +87,4 @@ def inspect(
     return result
 
 def print(*args, **kwargs):
-    __builtin__.print(inspect(*args, *kwargs))
+    __builtin__.print(inspect(*args, **kwargs))
