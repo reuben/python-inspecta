@@ -7,8 +7,8 @@ import os
 import glob
 import setuptools
 
-# DISABLED/BUG: this line fails when `pip install totalrecall` but works `pip install .`
-# from totalrecall import __version__
+# DISABLED/BUG: this line fails when `pip install inspecta` but works `pip install .`
+# from inspecta import __version__
 
 
 # =========================================
@@ -66,6 +66,18 @@ def get_requirements():
 
 name = 'inspecta'
 version = '0.1.0'
+description = 'A colorized object pretty printer - for Python.'
+keywords = [
+    'inspector',
+    'inspection',
+    'color',
+    'colors',
+    'syntax-highlighting',
+    'prettyprinter',
+    'pretty-printer',
+    'debugging',
+    'terminal',
+]
 
 readme = get_readme()
 requirements = get_requirements()
@@ -75,21 +87,8 @@ data_files = find_data_files(['*.*'], os.path.join(name, 'tests', '__fixtures__'
 config = {
     'name': name,
     'version': version,
-    'description': (
-        'Python application configuration - highly inspired by `node-config`.'
-    ),
-    'keywords': [
-        'config',
-        'configuration',
-        'configurations',
-        'settings',
-        'env',
-        'environment',
-        'environments',
-        'application',
-        'node-config',
-        'python-config',
-    ],
+    'description': (description),
+    'keywords': keywords,
     'author': 'Jonas Grimfelt',
     'author_email': 'grimen@gmail.com',
     'url': 'https://github.com/grimen/python-{name}'.format(name = name),
@@ -111,23 +110,21 @@ config = {
         'Operating System :: POSIX',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
     ],
 
     'packages': packages,
     'package_dir': {
-        'totalrecall': name,
+        name: name,
     },
     'package_data': {
         '': [
             'MIT-LICENSE',
             'README.md',
         ],
-        'totalrecall': [
+        name: [
             '*.*',
         ],
     },
