@@ -42,24 +42,39 @@ def inspect(
     colors = False,
 ):
     if indent is None:
-        indent = DEFAULT_INSPECTOR_INDENT
+        indent = env.get('INSPECTOR_INDENT', None)
+        indent = indent or env.get('INDENT', None)
+        indent = indent or DEFAULT_INSPECTOR_INDENT
 
-    depth = env.get('INSPECTOR_DEPTH', None)
+    if indent == False:
+        indent = None
+
+    if indent:
+        if not isinstance(indent, int):
+            indent = int(indent)
 
     if depth is None:
-        depth = DEFAULT_INSPECTOR_DEPTH
+        depth = env.get('INSPECTOR_DEPTH', None)
+        depth = depth or env.get('DEPTH', None)
+        depth = depth or DEFAULT_INSPECTOR_DEPTH
 
     if depth == False:
         depth = None
 
     if depth:
-        depth = int(depth)
-
-    colors = env.get('INSPECTOR_COLORS', None)
-    colors = colors or env.get('COLORS', None)
+        if not isinstance(depth, int):
+            depth = int(depth)
 
     if colors is None:
-        colors = DEFAULT_INSPECTOR_COLORS
+        colors = env.get('INSPECTOR_COLORS', None)
+        colors = colors or env.get('COLORS', None)
+        colors = colors or DEFAULT_INSPECTOR_COLORS
+
+    if colors == False:
+        colors = None
+
+    if colors:
+        colors = bool(colors)
 
     colors = re.search(r'^true|1$', str(colors), flags = re.IGNORECASE)
 

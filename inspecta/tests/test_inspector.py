@@ -182,6 +182,44 @@ class TestCase(helper.TestCase):
 
         self.assertEqual(result, "({'bar':[1,2,3],'baz':True,'foo':{'bar':{'baz':[{'a':1,'b':'two','c':('three',4,'five')}]}}},{'bar':[1,2,3],'baz':True,'foo':{'bar':{'baz':[{'a':1,'b':'two','c':('three',4,'five')}]}}})")
 
+        with self.assertNotRaises(Exception):
+            result = inspecta.inspect((
+                {
+                    'foo': {
+                        'bar': {
+                            'baz': [
+                                {
+                                    'a': 1,
+                                    'b': 'two',
+                                    'c': ('three', 4, 'five')
+                                }
+                            ]
+                        }
+                    },
+                    'bar': [1, 2, 3],
+                    'baz': True
+                },
+                {
+                    'foo': {
+                        'bar': {
+                            'baz': [
+                                {
+                                    'a': 1,
+                                    'b': 'two',
+                                    'c': ('three', 4, 'five')
+                                }
+                            ]
+                        }
+                    },
+                    'bar': [1, 2, 3],
+                    'baz': True
+                }
+            ), colors = True)
+            result = trim(result)
+
+        self.assertNotEqual(result, "({'bar':[1,2,3],'baz':True,'foo':{'bar':{'baz':[{'a':1,'b':'two','c':('three',4,'five')}]}}},{'bar':[1,2,3],'baz':True,'foo':{'bar':{'baz':[{'a':1,'b':'two','c':('three',4,'five')}]}}})")
+        self.assertTrue(u"\x1b[" in result)
+
     def test_print(self):
         self.assertTrue(callable(inspecta.print))
 
