@@ -65,7 +65,7 @@ def get_requirements():
 # --------------------------------------
 
 name = 'inspecta'
-version = '0.1.2'
+version = '0.1.3'
 description = 'A colorized object pretty printer - for Python.'
 keywords = [
     'inspector',
