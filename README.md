@@ -1,5 +1,5 @@
 
-# `inspecta` [![PyPI version](https://badge.fury.io/py/inspecta.svg)](https://badge.fury.io/py/inspecta) [![Build Status](https://travis-ci.com/grimen/python-inspecta.svg?branch=master)](https://travis-ci.com/grimen/python-inspecta)
+# `inspecta` [![PyPI version](https://badge.fury.io/py/inspecta.svg)](https://badge.fury.io/py/inspecta) [![Build Status](https://travis-ci.com/grimen/python-inspecta.svg?branch=master)](https://travis-ci.com/grimen/python-inspecta) [![Coverage Status](https://codecov.io/gh/grimen/python-inspecta/branch/master/graph/badge.svg)](https://codecov.io/gh/grimen/python-inspecta)
 
 *A colorized object pretty printer - for Python.*
 
