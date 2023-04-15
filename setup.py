@@ -5,7 +5,6 @@
 
 import os
 import setuptools
-import setupextras
 
 # DISABLED/BUG: this line fails when `pip install inspecta` but works `pip install .`
 # from inspecta import __version__
@@ -30,10 +29,15 @@ keywords = [
     'terminal',
 ]
 
-packages = setupextras.get_packages()
-data_files = setupextras.get_data_files(['*.*'], os.path.join(name, 'tests', '__fixtures__'))
-requirements = setupextras.get_requirements()
-readme = setupextras.get_readme()
+packages = setuptools.find_packages(".")
+requirements = [
+    "rootpath @ git+https://github.com/reuben/python-rootpath.git@ced47237c25d39868d3ceb91af1f48b702469c99#egg=rootpath",
+    "six >= 1.11.0",
+    "pygments >= 2.2.0",
+    "termcolor >= 1.1.0",
+]
+with open("README.md") as fin:
+    readme = fin.read()
 
 config = {
     'name': name,
@@ -79,7 +83,6 @@ config = {
             '*.*',
         ],
     },
-    'data_files': data_files,
     'include_package_data': True,
     'zip_safe': True,
 
